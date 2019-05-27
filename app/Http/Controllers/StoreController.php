@@ -121,13 +121,13 @@ class StoreController extends Controller
 
     public function getCart(){
         $categories = Category::all();
-        if(!Session::has('cart')){
+        /*if(!Session::has('cart')){
             return view('store.cart', ['products' => null]);
         }
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
-        return view('store.cart', ['categories' => $categories, 'products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
-
+        return view('store.cart', ['categories' => $categories, 'products' => $cart->items, 'totalPrice' => $cart->totalPrice]);*/
+        return view('store.cart', ['categories' => $categories]);
     }
 
 
