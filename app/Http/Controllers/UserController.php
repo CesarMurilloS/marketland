@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use Illuminate\Validation\Rule; //import Rule class
+
 
 class UserController extends Controller
 {
@@ -23,7 +25,7 @@ class UserController extends Controller
             'email' => 'email|required|unique:users|max:255',
             'password' => 'required|min:8|max:255',
             'username' => 'required|unique:users|min:4|max:255',
-            'phone' => 'required|unique:users|numeric|min:10|max:10',
+            'phone' => 'required|unique:users|numeric|max:10',
         ]);
 
 
@@ -44,6 +46,51 @@ class UserController extends Controller
 
         return redirect()->route('store.index');
 
+    }
+
+    public function postEditProfile(Request $request){
+
+        $user = auth()->user();
+
+        $this->validate($request, [
+            'name' => 'required|min:2|max:30',
+            'lastname' => 'required|min:2|max:30',
+            'email' => 'email|max:255|unique:users,email,'.$user->id,
+            'password' => 'required|min:8|max:255',
+            'username' => 'required|min:4|max:255|unique:users,username,'.$user->id,
+            'phone' => 'required|numeric|unique:users,phone,'.$user->id,
+        ]);
+
+
+        $user->name = $request->input('name'); // Name of the input field here
+        $user->lastname = $request->input('lastname'); // Name of the input field here
+        $user->email = $request->input('email'); // Name of the input field here
+        $user->password = $request->input('password'); // Name of the input field here
+        $user->username = $request->input('username'); // Name of the input field here
+        $user->phone = $request->input('phone'); // Name of the input field here
+        $user->save(); // no validation implementedenter code here
+
+
+
+        /*if (!$request->filled('password')) {
+            $user->fill($input)->save();
+
+            return back()->with('success_message', 'Profile updated successfully!');
+        }
+
+        $user->password = bcrypt($request->password);
+        $user->fill($input)->save();*/
+
+
+
+        return redirect()->route('user.profile');
+
+
+    }
+
+    public function getEditProfile(){
+        $categories = Category::all();
+        return view('user.edit_profile', ['categories' => $categories])->with('user', auth()->user());
     }
 
     public function getSignin(){

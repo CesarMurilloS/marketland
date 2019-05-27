@@ -138,8 +138,13 @@ Route::group(['prefix' => 'user'], function(){
             'as' => 'user.profile',
         ]);
 
-        Route::get('/editprofile', [
+        Route::post('/editprofile', [
             'uses' => 'UserController@postEditProfile',
+            'as' => 'user.editProfile',
+        ]);
+
+        Route::get('/editprofile', [
+            'uses' => 'UserController@getEditProfile',
             'as' => 'user.editProfile',
         ]);
 

@@ -4,8 +4,16 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 
+use App\Cart;
+
 use App\Product;
 use App\Category;
+
+use Stripe\Stripe;
+
+
+use Session;
+
 use Illuminate\Support\Facades\Input;
 
 
@@ -28,12 +36,6 @@ class StoreController extends Controller
         return view('store.index', ['categories' => $categories, 'products' => $products]);
     }
 
-    public function getCart(){//Session only
-        $products = Product::all();
-        $categories = Category::all();
-
-        return view('store.cart', ['categories' => $categories, 'products' => $products]);
-    }
 
     public function getSearch(){
         //$key = Input::get('key');
@@ -105,15 +107,64 @@ class StoreController extends Controller
 
     public function getAddToCart(Request $request, $id){//Add product to cart
         $product = Product::find($id);
-        $categories = Category::all();
-
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $product->id);
+        $categories = Category::all();
+
 
         $request->session()->put('cart', $cart);
-        dd($request->session()->get('cart'));
-        //return redirect()->route('product.index');
+        //dd($request->session()->get('cart'));
+        return redirect()->route('store.index', ['categories' => $categories]);
+
+    }
+
+    public function getCart(){
+        $categories = Category::all();
+        if(!Session::has('cart')){
+            return view('store.cart', ['products' => null]);
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('store.cart', ['categories' => $categories, 'products' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+
+    }
+
+
+    public function getCheckout(){
+        $categories = Category::all();
+        if(!Session::has('cart')){
+            return view('store.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart->totalPrice;
+        return view('store.checkout', ['categories' => $categories, 'total' => $total]);
+    }
+
+    public function postCheckout(Request $request){
+        if(!Session::has('cart')){
+            return redirect()->route('store.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        Stripe::setApiKey('sk_test_YXRDjOjZfcqNkNCjXCovu5N400J2q4emsM');
+        try{
+            Charge::create(array(
+                //Stripe use cents so we multiply cents by 100 to get dollars
+                "amount" => $cart->totalPrice * 100,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), //Obtained with Stripe.js
+                "description" => "Test Charge"
+            ));
+
+        } catch (\Exception $e){
+            return redirect()->route('checkout')->with('error', $e->getMessage());
+        }
+
+        Session::forget('cart');
+        return redirect()->route('product.index')->with('success', 'Successfully purchase products');
 
     }
 
@@ -123,7 +174,7 @@ class StoreController extends Controller
 
         return view('store.product', ['categories' => $categories,'product' => $product]);
 
-        //return redirect()->route('product.index');
-
     }
+
+
 }

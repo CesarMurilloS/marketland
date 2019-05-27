@@ -35,7 +35,7 @@
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
                 <a class="nav-link waves-effect" href="{{ route('store.cart') }}">
-                    <span class="badge amber darken-2 z-depth-1 mr-1"> 1 </span>
+                    <span class="badge amber darken-2 z-depth-1 mr-1">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                     <i class="fas fa-shopping-cart"></i>
                     <span class="clearfix d-none d-lg-inline-block"> Cart </span>
                 </a>
