@@ -40,7 +40,7 @@
         @yield('styles')
     </head>
     <body>
-        @include('sections.header')
+        @include('sections.header_light')
 
         @yield('content')
 

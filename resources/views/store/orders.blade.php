@@ -1,13 +1,11 @@
 @extends('layouts.layout')
 
 @section('title')
-    {{ config('app.name', 'Marketland') }} | Shopping Cart
+    {{ config('app.name', 'Marketland') }} | My Orders
 @endsection
 
 @section('content')
 
-
-    @if(Session::has('cart'))
 <!--Main Layout-->
 <main>
 
@@ -331,16 +329,4 @@
 
   </main>
 <!--Main Layout-->
-
-@else
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-                <div class="col-12">
-                    <p class="mx-auto text-muted my-5">You have not added products to your cart yet.<a href="{{ route('store.index') }}">Start adding products.</a></p>
-                </div>
-                <p class="small"></p>
-            </div>
-        </div>
-    @endif
 @endsection
-
