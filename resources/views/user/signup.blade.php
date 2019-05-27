@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout_light')
 
 @section('title')
     {{ config('app.name', 'Marketland') }} | Signup

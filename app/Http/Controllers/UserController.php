@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Category;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -10,7 +12,7 @@ use Auth;
 
 class UserController extends Controller
 {
-        public function getSignup(){
+    public function getSignup(){
         return view('user.signup');
     }
 
@@ -61,7 +63,9 @@ class UserController extends Controller
     }
 
     public function getProfile(){
-        return view('user.profile')->with('user', auth()->user());
+
+        $categories = Category::all();
+        return view('user.profile', ['categories' => $categories])->with('user', auth()->user());
     }
 
     public function getLogout(){

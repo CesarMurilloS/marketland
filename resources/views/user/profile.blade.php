@@ -34,13 +34,7 @@
                         suscipit laboriosam, nisi ut aliquid commodi.</p>-->
                     <!--Review-->
                     <a class="btn btn-info btn-block my-4" href="{{ route('user.editProfile') }}">Edit profile</a>
-                    <div class="orange-text">
-                        <i class="fas fa-star"> </i>
-                        <i class="fas fa-star"> </i>
-                        <i class="fas fa-star"> </i>
-                        <i class="fas fa-star"> </i>
-                        <i class="fas fa-star"> </i>
-                    </div>
+
                 </div>
 
             </div>

@@ -51,7 +51,6 @@ Route::get('/terms', [
 
 
 
-
 Route::get('/search', [
     'uses' => 'StoreController@getSearch',
     'as' => 'store.search',
@@ -76,10 +75,14 @@ Route::get('/cart', [
     'as' => 'store.cart',
 ]);
 
+Route::get('/product/{id}', [
+    'uses' => 'StoreController@getProduct',
+    'as' => 'store.product',
+]);
 
-Route::get('/add_cart/{id}', [
+Route::get('/add-to-cart/{id}', [
     'uses' => 'StoreController@getAddToCart',
-    'as' => 'store.addTocart',
+    'as' => 'store.addToCart',
 ]);
 
 
@@ -149,6 +152,6 @@ Route::group(['prefix' => 'user'], function(){
 
 });
 
-
+//Auth:routes();
 
 
