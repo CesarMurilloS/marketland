@@ -11,7 +11,7 @@
 
     <hr class="my-4">
 
-    <!-- Social icons -->
+    <!-- Social icons --
     <div class="pb-4">
       <a href="https://www.facebook.com/mdbootstrap" target="_blank">
         <i class="fab fa-facebook-f mr-3"></i>
@@ -45,7 +45,7 @@
         <i class="fab fa-codepen mr-3"></i>
       </a>
     </div>
-    <!-- Social icons -->
+    <!- Social icons -->
 
     <!--Copyright-->
     <div class="footer-copyright py-3">
