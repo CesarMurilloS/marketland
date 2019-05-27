@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->integer('id_user');
             $table->integer('id_product');
             $table->float('review')->default(0.0);
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->boolean('comment_status');//1:created, 0:deleted
             $table->timestamps();
         });
