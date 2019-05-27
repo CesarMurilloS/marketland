@@ -30,3 +30,27 @@ html,
     border: 1px solid #4dd0e1;
     box-shadow: 0 0 0 1px #4dd0e1;
 }
+
+.amber-darken-2-text{
+    color:#ffa000;
+}
+
+.input-group.md-form.form-sm.form-r-squared input{
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0rem;
+    border-bottom-right-radius: 0rem;
+}
+.input-group.md-form.form-sm.form-l-squared input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+}
+
+.input-group.md-form.form-sm.form-l-squared input.amber-border:focus:not([readonly])  {
+    border: 1px solid #ffa000;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.input-group.md-form.form-sm.form-l-squared .input-group-text.btn-amber{
+    border: 1px solid transparent;
+}

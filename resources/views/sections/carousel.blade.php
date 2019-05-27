@@ -1,5 +1,5 @@
 <!--Carousel Wrapper-->
-<div id="carousel-index-products" class="carousel slide carousel-fade pt-5" data-ride="carousel">
+<div id="carousel-index-products" class="carousel slide carousel-fade pt-5" style="height:50vh" data-ride="carousel">
   <!--Indicators-->
   <ol class="carousel-indicators">
     <li data-target="#carousel-index-products" data-slide-to="0" class="active"></li>
@@ -11,7 +11,7 @@
   <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
       <div class="view">
-        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_electronics2x._CB470927254_.png"
+        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_electronics2x._CB470927254_.png" style="height:50vh; width:auto;"
           alt="First slide">
         <div class="mask rgba-black-light"></div>
       </div>
@@ -23,7 +23,7 @@
     <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
-        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_MensFashion2x._CB470927251_.png"
+        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_MensFashion2x._CB470927251_.png" style="height:50vh; width:auto;"
           alt="Second slide">
         <div class="mask rgba-black-strong"></div>
       </div>
@@ -35,7 +35,7 @@
     <div class="carousel-item">
       <!--Mask color-->
       <div class="view">
-        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_WomensFashion2x._CB470926956_.png"
+        <img class="d-block w-100" src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_WomensFashion2x._CB470926956_.png" style="height:50vh; width:auto;"
           alt="Third slide">
         <div class="mask rgba-black-slight"></div>
       </div>

@@ -57,6 +57,8 @@ Route::get('/search', [
     'as' => 'store.search',
 ]);
 
+
+
 Route::get('/orders', [
     'uses' => 'StoreController@getOrders',
     'as' => 'store.orders',
