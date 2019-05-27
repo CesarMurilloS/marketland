@@ -15,7 +15,7 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="{{ $product->image_path }}" class="img-fluid" alt="">
+            <img src="{{ $product->image_path }}" class="img-fluid waves-light" style="height:75vh; width:auto;" alt="">
 
         </div>
         <!--Grid column-->
@@ -39,6 +39,11 @@
                                     <a href="" class="text-muted small">
                                         <p>{{ $product->category }}</p>
                                     </a>
+                                    <div class="blue-text">
+                                        @if($product->sales > 0 )
+                                        <p>{{ $product->sales }} people had accquired this product recently.</p>
+                                        @endif
+                                    </div>
                                     <div class="review-section">
                                         @for ($i = 0; $i < $product->review; $i++)
                                             <i class="fas fa-star amber-darken-2-text"> </i>
